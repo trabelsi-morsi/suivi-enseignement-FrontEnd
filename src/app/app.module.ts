@@ -6,25 +6,43 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import {LoginPage} from "../pages/login/login";
+import { RegisterProvider } from '../providers/register/register';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {SignUpPage} from "../pages/sign-up/sign-up";
+import {FormsModule} from "@angular/forms";
+import {AnimatesDirective, AnimationService} from "css-animator";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    SignUpPage,
+    AnimatesDirective
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    SignUpPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    HttpClientModule,
+    HttpClient,
+    RegisterProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RegisterProvider,
+    AnimationService
   ]
 })
 export class AppModule {}
