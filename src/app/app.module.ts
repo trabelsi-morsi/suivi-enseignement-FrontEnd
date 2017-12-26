@@ -12,6 +12,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {FormsModule} from "@angular/forms";
 import {AnimatesDirective, AnimationService} from "css-animator";
+import { MatiereProvider } from '../providers/matiere/matiere';
+import {MatierePage} from "../pages/matiere/matiere";
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import {AnimatesDirective, AnimationService} from "css-animator";
     HomePage,
     LoginPage,
     SignUpPage,
+    MatierePage,
     AnimatesDirective
   ],
   imports: [
@@ -32,7 +35,8 @@ import {AnimatesDirective, AnimationService} from "css-animator";
     MyApp,
     HomePage,
     LoginPage,
-    SignUpPage
+    SignUpPage,
+    MatierePage
   ],
   providers: [
     StatusBar,
@@ -42,7 +46,8 @@ import {AnimatesDirective, AnimationService} from "css-animator";
     RegisterProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterProvider,
-    AnimationService
+    AnimationService,
+    MatiereProvider
   ]
 })
 export class AppModule {}
