@@ -37,6 +37,6 @@ export class SignUpPage implements OnInit{
     this.register = new Register(this.mail,this.password,this.username,this.dateNaissance.toString())
     console.log(this.register)
     this.regiterProvider.addRegister(this.register )
-    this.navCtrl.push(LoginPage)
+    this.navCtrl.setRoot(LoginPage)
   }
 }
