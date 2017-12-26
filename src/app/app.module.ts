@@ -14,6 +14,8 @@ import {FormsModule} from "@angular/forms";
 import {AnimatesDirective, AnimationService} from "css-animator";
 import {DepartementPage} from "../pages/departement/departement";
 import { DepartementProvider } from '../providers/departement/departement';
+import { MatiereProvider } from '../providers/matiere/matiere';
+import {MatierePage} from "../pages/matiere/matiere";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { DepartementProvider } from '../providers/departement/departement';
     LoginPage,
     SignUpPage,
     DepartementPage,
+    MatierePage,
     AnimatesDirective
   ],
   imports: [
@@ -37,6 +40,8 @@ import { DepartementProvider } from '../providers/departement/departement';
     LoginPage,
     DepartementPage,
     SignUpPage
+    SignUpPage,
+    MatierePage
   ],
   providers: [
     StatusBar,
@@ -48,6 +53,7 @@ import { DepartementProvider } from '../providers/departement/departement';
     RegisterProvider,
     AnimationService,
     DepartementProvider
+    MatiereProvider
   ]
 })
 export class AppModule {}
