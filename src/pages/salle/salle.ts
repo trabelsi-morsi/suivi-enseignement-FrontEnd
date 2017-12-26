@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {Matiere} from "../../entities/matiere";
+import {Salle} from "../../entities/salle";
 import {MatiereProvider} from "../../providers/matiere/matiere";
+import {SalleProvider} from "../../providers/salle/salle";
 
 /**
- * Generated class for the MatierePage page.
+ * Generated class for the SallePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,71 +14,65 @@ import {MatiereProvider} from "../../providers/matiere/matiere";
 
 @IonicPage()
 @Component({
-  selector: 'page-matiere',
-  templateUrl: 'matiere.html',
+  selector: 'page-salle',
+  templateUrl: 'salle.html',
 })
-export class MatierePage implements OnInit {
+export class SallePage implements OnInit {
   ngOnInit(): void {
   }
 
-  matiere: any
+  salle: any
   res: any
-  matiereToEdit: Matiere
+  salleToEdit: Salle
 
-  constructor(public navCtrl: NavController, private matiereProvider: MatiereProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, private salleProvider: SalleProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
-    this.getMatiereList();
+    console.log('ionViewDidLoad SallePage');
   }
 
-  getMatiereList() {
+  getSalleList() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
     loading.present();
-    this.matiere = [];
-    this.matiereProvider.getAllMatiere().then(data => {
-      this.matiere = data;
+    this.salle = [];
+    this.salleProvider.getAll().then(data => {
+      this.salle = data;
       loading.dismiss();
     });
 
   }
 
   doRefresh(refresher) {
-    this.matiere = [];
-    this.matiereProvider.getAllMatiere().then(data => {
-      this.matiere = data;
+    this.salle = [];
+    this.salleProvider.getAll().then(data => {
+      this.salle = data;
       refresher.complete();
     });
   }
 
   onDelete(id: number) {
-    this.matiereProvider.deleteMatiere(id).then(data => {
-      this.getMatiereList();
+    this.salleProvider.delete(id).then(data => {
+      this.getSalleList();
     });
   }
 
-  showPrompt(register: Matiere) {
+  showPrompt(salle: Salle) {
     let prompt = this.alertCtrl.create({
       title: 'Modifier la matière',
       inputs: [
         {
           name: 'id',
           type: 'hidden',
-          value: register.id.toString()
+          value: salle.id.toString()
         },
         {
-          name: 'nom',
+          name: 'nomSalle',
           placeholder: 'Nom',
           type: 'text',
-          value: register.nom
-        },
-        {
-          name: 'abvreviation',
-          placeholder: 'Abreviation',
-          type: 'text',
-          value: register.abvreviation
+          value: salle.nomSalle
         }
 
       ],
@@ -91,10 +87,10 @@ export class MatierePage implements OnInit {
           text: 'Valider',
           handler: data => {
             console.log(data.id);
-            this.matiereToEdit = new Matiere(parseInt(data.id), data.abvreviation, data.nom);
-            console.log('dddd  ' + this.matiereToEdit)
-            this.matiereProvider.addMatiere(this.matiereToEdit).then(data => {
-              this.getMatiereList();
+            this.salleToEdit = new Salle(parseInt(data.id), data.nomSalle);
+            console.log('dddd  ' + this.salleToEdit)
+            this.salleProvider.add(this.salleToEdit).then(data => {
+              this.getSalleList();
 
             });
 
@@ -107,7 +103,7 @@ export class MatierePage implements OnInit {
 
   showPromptAdd() {
     let prompt = this.alertCtrl.create({
-      title: 'Ajouter une matière',
+      title: 'Ajouter une salle',
       inputs: [
         {
           name: 'id',
@@ -115,18 +111,11 @@ export class MatierePage implements OnInit {
 
         },
         {
-          name: 'nom',
+          name: 'nomSalle',
           placeholder: 'Nom',
           type: 'text',
 
         },
-        {
-          name: 'abvreviation',
-          placeholder: 'Abreviation',
-          type: 'text',
-
-        }
-
       ],
       buttons: [
         {
@@ -139,10 +128,10 @@ export class MatierePage implements OnInit {
           text: 'Valider',
           handler: data => {
             console.log(data.id);
-            this.matiereToEdit = new Matiere(null, data.abvreviation, data.nom);
-            console.log('dddd  ' + this.matiereToEdit)
-            this.matiereProvider.addMatiere(this.matiereToEdit).then(data => {
-              this.getMatiereList();
+            this.salleToEdit = new Salle(null, data.nomSalle);
+            console.log('dddd  ' + this.salleToEdit)
+            this.salleProvider.add(this.salleToEdit).then(data => {
+              this.getSalleList();
 
             });
 
@@ -157,14 +146,14 @@ export class MatierePage implements OnInit {
     let val = ev.target.value;
 
     if (val && val.trim() != '') {
-      this.matiere = this.matiere.filter((item) => {
+      this.salle = this.salle.filter((item) => {
         return (item.nomSalle.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
     else {
 
-      this.getMatiereList();
-      return this.matiere;
+      this.getSalleList();
+      return this.salle;
 
     }
   }

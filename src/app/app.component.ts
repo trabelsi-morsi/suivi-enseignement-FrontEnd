@@ -1,12 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import {Component, ViewChild} from '@angular/core';
+import {Nav, Platform} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
+import {HomePage} from '../pages/home/home';
+import {LoginPage} from '../pages/login/login';
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {MatierePage} from "../pages/matiere/matiere";
+import {SallePage} from "../pages/salle/salle";
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +17,7 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -24,10 +25,11 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
 
-      { title: 'login', component: LoginPage },
-      { title: 'Home', component: HomePage },
-      { title: 'Matière', component: MatierePage },
-      { title: 'Sign up', component: SignUpPage }
+      {title: 'login', component: LoginPage},
+      {title: 'Home', component: HomePage},
+      {title: 'Matière', component: MatierePage},
+      {title: 'Sign up', component: SignUpPage},
+      {title: 'Salle', component: SallePage}
     ];
 
   }
