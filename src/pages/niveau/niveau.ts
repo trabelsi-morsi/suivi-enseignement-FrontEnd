@@ -28,7 +28,7 @@ export class NiveauPage implements OnInit {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NiveauPage');
+    this.getNiveauList();
   }
 
   getNiveauList() {

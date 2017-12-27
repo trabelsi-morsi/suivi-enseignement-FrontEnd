@@ -29,7 +29,7 @@ export class SallePage implements OnInit {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SallePage');
+    this.getSalleList();
   }
 
   getSalleList() {

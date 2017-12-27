@@ -3,13 +3,6 @@ import {AlertController, IonicPage, LoadingController, NavController, NavParams}
 import {Matiere} from "../../entities/matiere";
 import {MatiereProvider} from "../../providers/matiere/matiere";
 
-/**
- * Generated class for the MatierePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-matiere',

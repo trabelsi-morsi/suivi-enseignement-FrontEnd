@@ -23,7 +23,7 @@ export class EnseignantPage implements OnInit {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EnseignantPage');
+    this.getEnseignantList();
   }
 
   getEnseignantList() {
