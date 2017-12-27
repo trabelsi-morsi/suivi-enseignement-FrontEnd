@@ -21,6 +21,8 @@ import {SalleProvider} from '../providers/salle/salle';
 import {SallePage} from "../pages/salle/salle";
 import {EnseignantProvider} from '../providers/enseignant/enseignant';
 import {EnseignantPage} from "../pages/enseignant/enseignant";
+import {NiveauProvider} from '../providers/niveau/niveau';
+import {NiveauPage} from "../pages/niveau/niveau";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {EnseignantPage} from "../pages/enseignant/enseignant";
     DepartementPage,
     MatierePage,
     EnseignantPage,
+    NiveauPage,
     AnimatesDirective
   ],
   imports: [
@@ -48,6 +51,7 @@ import {EnseignantPage} from "../pages/enseignant/enseignant";
     DepartementPage,
     SignUpPage,
     SallePage,
+    NiveauPage,
     EnseignantPage,
     MatierePage
   ],
@@ -63,7 +67,8 @@ import {EnseignantPage} from "../pages/enseignant/enseignant";
     SalleProvider,
     DepartementProvider,
     MatiereProvider,
-    EnseignantProvider
+    EnseignantProvider,
+    NiveauProvider
 
   ]
 })

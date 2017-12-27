@@ -10,6 +10,7 @@ import {DepartementPage} from "../pages/departement/departement";
 import {MatierePage} from "../pages/matiere/matiere";
 import {SallePage} from "../pages/salle/salle";
 import {EnseignantPage} from "../pages/enseignant/enseignant";
+import {NiveauPage} from "../pages/niveau/niveau";
 
 
 @Component({
@@ -35,7 +36,8 @@ export class MyApp {
       {title: 'Departement', component: DepartementPage},
       {title: 'Sign up', component: SignUpPage},
       {title: 'Salle', component: SallePage},
-      {title: 'Enseignant', component: EnseignantPage}
+      {title: 'Enseignant', component: EnseignantPage},
+      {title: 'Niveau', component: NiveauPage}
 
     ];
 

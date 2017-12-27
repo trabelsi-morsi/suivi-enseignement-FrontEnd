@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <img src="assets/logobtn.png" style=" width: 35px; ">
+    </button>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h1 class="myTitle">Liste des niveaux</h1>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+
+
+    <ion-item-sliding *ngFor="let r of niveau ">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="http://midlandbooks.ie/wp-content/uploads/2015/03/Book-icon1.png">
+        </ion-avatar>
+        <h2>{{r.nom }}</h2>
+      </ion-item>
+      <ion-item-options>
+
+        <button ion-button color="primary" icon-start (click)="showPrompt(r)">
+          <ion-icon name="create"></ion-icon>
+
+        </button>
+        <button ion-button color="secondary" icon-start (click)="onDelete(r.id)">
+          <ion-icon name="trash"></ion-icon>
+
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="showPromptAdd()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

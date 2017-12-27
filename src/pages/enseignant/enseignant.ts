@@ -111,7 +111,7 @@ export class EnseignantPage implements OnInit {
 
         },
         {
-          name: 'nomSalle',
+          name: 'nom',
           placeholder: 'Nom',
           type: 'text',
 
@@ -134,7 +134,7 @@ export class EnseignantPage implements OnInit {
           text: 'Valider',
           handler: data => {
             console.log(data.id);
-            this.enseignantToEdit = new Enseignant(null, data.nomSalle, data.email);
+            this.enseignantToEdit = new Enseignant(null, data.nom, data.email);
             this.enseignantProvider.add(this.enseignantToEdit).then(data => {
               this.getEnseignantList();
 
@@ -152,7 +152,7 @@ export class EnseignantPage implements OnInit {
 
     if (val && val.trim() != '') {
       this.enseignant = this.enseignant.filter((item) => {
-        return (item.nomSalle.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.nom.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
     else {

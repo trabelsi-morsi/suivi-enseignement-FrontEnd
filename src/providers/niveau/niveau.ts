@@ -1,16 +1,16 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import {Salle} from "../../entities/salle";
-import {Enseignant} from "../../entities/enseignant";
-
+import {Injectable} from '@angular/core';
+import {Niveau} from "../../entities/niveau";
 
 const headers = new HttpHeaders().set("Content-Type", "application/json")
   .set('Accept', 'application/json');
+
 @Injectable()
-export class EnseignantProvider {
-  url = 'http://34.240.182.39:8080/enseignant';
+export class NiveauProvider {
+  url = 'http://34.240.182.39:8080/niveau';
+
   constructor(public http: HttpClient) {
-    console.log('Hello EnseignantProvider Provider');
+    console.log('Hello NiveauProvider Provider');
   }
 
   public getAll() {
@@ -24,9 +24,9 @@ export class EnseignantProvider {
     });
   }
 
-  public add(enseignant: Enseignant) {
+  public add(niveau: Niveau) {
     return new Promise(resolve => {
-      this.http.post(this.url, enseignant, {headers}).subscribe(data => {
+      this.http.post(this.url, niveau, {headers}).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {
