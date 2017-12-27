@@ -12,7 +12,10 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {FormsModule} from "@angular/forms";
 import {AnimatesDirective, AnimationService} from "css-animator";
-import {MatiereProvider} from '../providers/matiere/matiere';
+
+import {DepartementPage} from "../pages/departement/departement";
+import { DepartementProvider } from '../providers/departement/departement';
+import { MatiereProvider } from '../providers/matiere/matiere';
 import {MatierePage} from "../pages/matiere/matiere";
 import {SalleProvider} from '../providers/salle/salle';
 import {SallePage} from "../pages/salle/salle";
@@ -24,6 +27,7 @@ import {SallePage} from "../pages/salle/salle";
     LoginPage,
     SignUpPage,
     SallePage,
+    DepartementPage,
     MatierePage,
     AnimatesDirective
   ],
@@ -38,6 +42,7 @@ import {SallePage} from "../pages/salle/salle";
     MyApp,
     HomePage,
     LoginPage,
+    DepartementPage,
     SignUpPage,
     SallePage,
     MatierePage
@@ -51,8 +56,10 @@ import {SallePage} from "../pages/salle/salle";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterProvider,
     AnimationService,
-    MatiereProvider,
-    SalleProvider
+    SalleProvider,
+    DepartementProvider,
+    MatiereProvider
+
   ]
 })
 export class AppModule {
