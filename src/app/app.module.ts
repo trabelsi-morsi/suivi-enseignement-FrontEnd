@@ -14,11 +14,13 @@ import {FormsModule} from "@angular/forms";
 import {AnimatesDirective, AnimationService} from "css-animator";
 
 import {DepartementPage} from "../pages/departement/departement";
-import { DepartementProvider } from '../providers/departement/departement';
-import { MatiereProvider } from '../providers/matiere/matiere';
+import {DepartementProvider} from '../providers/departement/departement';
+import {MatiereProvider} from '../providers/matiere/matiere';
 import {MatierePage} from "../pages/matiere/matiere";
 import {SalleProvider} from '../providers/salle/salle';
 import {SallePage} from "../pages/salle/salle";
+import {EnseignantProvider} from '../providers/enseignant/enseignant';
+import {EnseignantPage} from "../pages/enseignant/enseignant";
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import {SallePage} from "../pages/salle/salle";
     SallePage,
     DepartementPage,
     MatierePage,
+    EnseignantPage,
     AnimatesDirective
   ],
   imports: [
@@ -45,6 +48,7 @@ import {SallePage} from "../pages/salle/salle";
     DepartementPage,
     SignUpPage,
     SallePage,
+    EnseignantPage,
     MatierePage
   ],
   providers: [
@@ -58,7 +62,8 @@ import {SallePage} from "../pages/salle/salle";
     AnimationService,
     SalleProvider,
     DepartementProvider,
-    MatiereProvider
+    MatiereProvider,
+    EnseignantProvider
 
   ]
 })

@@ -9,6 +9,7 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
 import {DepartementPage} from "../pages/departement/departement";
 import {MatierePage} from "../pages/matiere/matiere";
 import {SallePage} from "../pages/salle/salle";
+import {EnseignantPage} from "../pages/enseignant/enseignant";
 
 
 @Component({
@@ -31,9 +32,10 @@ export class MyApp {
       {title: 'login', component: LoginPage},
       {title: 'Home', component: HomePage},
       {title: 'Matière', component: MatierePage},
-      {title: 'Departement', component: DepartementPage },
+      {title: 'Departement', component: DepartementPage},
       {title: 'Sign up', component: SignUpPage},
-      {title: 'Salle', component: SallePage}
+      {title: 'Salle', component: SallePage},
+      {title: 'Enseignant', component: EnseignantPage}
 
     ];
 
