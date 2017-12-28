@@ -8,5 +8,3 @@ export class Salle {
     this.nomSalle = nomSalle;
   }
 }
-
-

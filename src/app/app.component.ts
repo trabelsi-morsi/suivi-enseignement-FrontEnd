@@ -8,6 +8,8 @@ import {LoginPage} from '../pages/login/login';
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {DepartementPage} from "../pages/departement/departement";
 import {MatierePage} from "../pages/matiere/matiere";
+import {Enseignement} from "../entities/enseignement";
+import {AgentAccueilPage} from "../pages/agent-accueil/agent-accueil";
 import {SallePage} from "../pages/salle/salle";
 import {EnseignantPage} from "../pages/enseignant/enseignant";
 import {NiveauPage} from "../pages/niveau/niveau";
@@ -36,9 +38,9 @@ export class MyApp {
       {title: 'Departement', component: DepartementPage},
       {title: 'Sign up', component: SignUpPage},
       {title: 'Salle', component: SallePage},
+      { title: 'Enseignement', component: AgentAccueilPage },
       {title: 'Enseignant', component: EnseignantPage},
       {title: 'Niveau', component: NiveauPage}
-
     ];
 
   }

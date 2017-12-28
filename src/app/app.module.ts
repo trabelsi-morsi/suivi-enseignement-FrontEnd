@@ -17,6 +17,8 @@ import {DepartementPage} from "../pages/departement/departement";
 import {DepartementProvider} from '../providers/departement/departement';
 import {MatiereProvider} from '../providers/matiere/matiere';
 import {MatierePage} from "../pages/matiere/matiere";
+import {AgentAccueilPage} from "../pages/agent-accueil/agent-accueil";
+import { EnseignementProvider } from '../providers/enseignement/enseignement';
 import {SalleProvider} from '../providers/salle/salle';
 import {SallePage} from "../pages/salle/salle";
 import {EnseignantProvider} from '../providers/enseignant/enseignant';
@@ -33,6 +35,7 @@ import {NiveauPage} from "../pages/niveau/niveau";
     SallePage,
     DepartementPage,
     MatierePage,
+    AgentAccueilPage,
     EnseignantPage,
     NiveauPage,
     AnimatesDirective
@@ -50,6 +53,8 @@ import {NiveauPage} from "../pages/niveau/niveau";
     LoginPage,
     DepartementPage,
     SignUpPage,
+    MatierePage,
+    AgentAccueilPage,
     SallePage,
     NiveauPage,
     EnseignantPage,
@@ -64,6 +69,9 @@ import {NiveauPage} from "../pages/niveau/niveau";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterProvider,
     AnimationService,
+    DepartementProvider,
+    MatiereProvider,
+    EnseignementProvider,
     SalleProvider,
     DepartementProvider,
     MatiereProvider,
