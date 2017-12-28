@@ -1,23 +1,30 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import {BrowserModule} from '@angular/platform-browser';
+import {ErrorHandler, NgModule} from '@angular/core';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
+import {SplashScreen} from '@ionic-native/splash-screen';
+import {StatusBar} from '@ionic-native/status-bar';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import {MyApp} from './app.component';
+import {HomePage} from '../pages/home/home';
 import {LoginPage} from "../pages/login/login";
-import { RegisterProvider } from '../providers/register/register';
+import {RegisterProvider} from '../providers/register/register';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {FormsModule} from "@angular/forms";
 import {AnimatesDirective, AnimationService} from "css-animator";
+
 import {DepartementPage} from "../pages/departement/departement";
-import { DepartementProvider } from '../providers/departement/departement';
-import { MatiereProvider } from '../providers/matiere/matiere';
+import {DepartementProvider} from '../providers/departement/departement';
+import {MatiereProvider} from '../providers/matiere/matiere';
 import {MatierePage} from "../pages/matiere/matiere";
 import {AgentAccueilPage} from "../pages/agent-accueil/agent-accueil";
 import { EnseignementProvider } from '../providers/enseignement/enseignement';
+import {SalleProvider} from '../providers/salle/salle';
+import {SallePage} from "../pages/salle/salle";
+import {EnseignantProvider} from '../providers/enseignant/enseignant';
+import {EnseignantPage} from "../pages/enseignant/enseignant";
+import {NiveauProvider} from '../providers/niveau/niveau';
+import {NiveauPage} from "../pages/niveau/niveau";
 
 @NgModule({
   declarations: [
@@ -25,9 +32,12 @@ import { EnseignementProvider } from '../providers/enseignement/enseignement';
     HomePage,
     LoginPage,
     SignUpPage,
+    SallePage,
     DepartementPage,
     MatierePage,
     AgentAccueilPage,
+    EnseignantPage,
+    NiveauPage,
     AnimatesDirective
   ],
   imports: [
@@ -44,7 +54,11 @@ import { EnseignementProvider } from '../providers/enseignement/enseignement';
     DepartementPage,
     SignUpPage,
     MatierePage,
-    AgentAccueilPage
+    AgentAccueilPage,
+    SallePage,
+    NiveauPage,
+    EnseignantPage,
+    MatierePage
   ],
   providers: [
     StatusBar,
@@ -57,7 +71,14 @@ import { EnseignementProvider } from '../providers/enseignement/enseignement';
     AnimationService,
     DepartementProvider,
     MatiereProvider,
-    EnseignementProvider
+    EnseignementProvider,
+    SalleProvider,
+    DepartementProvider,
+    MatiereProvider,
+    EnseignantProvider,
+    NiveauProvider
+
   ]
 })
-export class AppModule {}
+export class AppModule {
+}
