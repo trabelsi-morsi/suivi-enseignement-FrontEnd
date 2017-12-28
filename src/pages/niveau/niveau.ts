@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
-import {Matiere} from "../../entities/matiere";
 import {Salle} from "../../entities/salle";
-import {MatiereProvider} from "../../providers/matiere/matiere";
-import {SalleProvider} from "../../providers/salle/salle";
+import {Niveau} from "../../entities/niveau";
+import {NiveauProvider} from "../../providers/niveau/niveau";
 
 /**
- * Generated class for the SallePage page.
+ * Generated class for the NiveauPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,65 +13,65 @@ import {SalleProvider} from "../../providers/salle/salle";
 
 @IonicPage()
 @Component({
-  selector: 'page-salle',
-  templateUrl: 'salle.html',
+  selector: 'page-niveau',
+  templateUrl: 'niveau.html',
 })
-export class SallePage implements OnInit {
+export class NiveauPage implements OnInit {
   ngOnInit(): void {
   }
 
-  salle: any
+  niveau: any
   res: any
-  salleToEdit: Salle
+  niveauToEdit: Niveau
 
-  constructor(public navCtrl: NavController, private salleProvider: SalleProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, private niveauProvider: NiveauProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
-    this.getSalleList();
+    this.getNiveauList();
   }
 
-  getSalleList() {
+  getNiveauList() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
     loading.present();
-    this.salle = [];
-    this.salleProvider.getAll().then(data => {
-      this.salle = data;
+    this.niveau = [];
+    this.niveauProvider.getAll().then(data => {
+      this.niveau = data;
       loading.dismiss();
     });
 
   }
 
   doRefresh(refresher) {
-    this.salle = [];
-    this.salleProvider.getAll().then(data => {
-      this.salle = data;
+    this.niveau = [];
+    this.niveauProvider.getAll().then(data => {
+      this.niveau = data;
       refresher.complete();
     });
   }
 
   onDelete(id: number) {
-    this.salleProvider.delete(id).then(data => {
-      this.getSalleList();
+    this.niveauProvider.delete(id).then(data => {
+      this.getNiveauList();
     });
   }
 
-  showPrompt(salle: Salle) {
+  showPrompt(niveau: Niveau) {
     let prompt = this.alertCtrl.create({
-      title: 'Modifier la matière',
+      title: 'Modifier le niveau',
       inputs: [
         {
           name: 'id',
           type: 'hidden',
-          value: salle.id.toString()
+          value: niveau.id.toString()
         },
         {
-          name: 'nomSalle',
+          name: 'nom',
           placeholder: 'Nom',
           type: 'text',
-          value: salle.nomSalle
+          value: niveau.nom
         }
 
       ],
@@ -87,10 +86,10 @@ export class SallePage implements OnInit {
           text: 'Valider',
           handler: data => {
             console.log(data.id);
-            this.salleToEdit = new Salle(parseInt(data.id), data.nomSalle);
-            console.log('dddd  ' + this.salleToEdit)
-            this.salleProvider.add(this.salleToEdit).then(data => {
-              this.getSalleList();
+            this.niveauToEdit = new Niveau(parseInt(data.id), data.nom);
+            console.log('dddd  ' + this.niveauToEdit)
+            this.niveauProvider.add(this.niveauToEdit).then(data => {
+              this.getNiveauList();
 
             });
 
@@ -111,7 +110,7 @@ export class SallePage implements OnInit {
 
         },
         {
-          name: 'nomSalle',
+          name: 'nom',
           placeholder: 'Nom',
           type: 'text',
 
@@ -128,10 +127,9 @@ export class SallePage implements OnInit {
           text: 'Valider',
           handler: data => {
             console.log(data.id);
-            this.salleToEdit = new Salle(null, data.nomSalle);
-            console.log('dddd  ' + this.salleToEdit)
-            this.salleProvider.add(this.salleToEdit).then(data => {
-              this.getSalleList();
+            this.niveauToEdit = new Niveau(null, data.nom);
+            this.niveauProvider.add(this.niveauToEdit).then(data => {
+              this.getNiveauList()
 
             });
 
@@ -146,17 +144,16 @@ export class SallePage implements OnInit {
     let val = ev.target.value;
 
     if (val && val.trim() != '') {
-      this.salle = this.salle.filter((item) => {
-        return (item.nomSalle.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.niveau = this.niveau.filter((item) => {
+        return (item.nom.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
     else {
 
-      this.getSalleList();
-      return this.salle;
+      this.getNiveauList();
+      return this.niveau;
 
     }
   }
-
 
 }
