@@ -1,7 +1,6 @@
 import {Enseignant} from "./enseignant";
-import {Niveaux} from "./niveaux";
+import {Niveau} from "./niveau";
 import {Salle} from "./salle";
-import {Jour} from "./jour";
 import {Seance} from "./seance";
 import {Departement} from "./departement";
 import {Matiere} from "./matiere";
@@ -16,14 +15,14 @@ export class Enseignement{
   rate: boolean
   date: Date
   enseignant: Enseignant
-  niveaux: Niveaux
+  niveaux: Niveau
   salle: Salle
   seance: Seance
   departement: Departement
   matiere: Matiere
 
 
-  constructor(id: number, annee: number, cours: number, module: number, par15: number, semestre: number, rate: boolean, date: Date, enseignant: Enseignant, niveaux: Niveaux, salle: Salle, seance: Seance, departement: Departement, matiere: Matiere) {
+  constructor(id: number, annee: number, cours: number, module: number, par15: number, semestre: number, rate: boolean, date: Date, enseignant: Enseignant, niveaux: Niveau, salle: Salle, seance: Seance, departement: Departement, matiere: Matiere) {
     this.id = id;
     this.annee = annee;
     this.cours = cours;

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
-import {Enseignement} from "../../entities/enseignement";
 import {EnseignementProvider} from "../../providers/enseignement/enseignement";
 
 /**
@@ -23,7 +22,6 @@ export class AgentAccueilPage {
   firstToggle= true
   date: Date = new Date()
   enseignementList = new Array();
-  enseignementToEdit: Enseignement
   constructor(public navCtrl: NavController, public navParams: NavParams, private enseignementProvider: EnseignementProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
   this.isToggled=false
   }
