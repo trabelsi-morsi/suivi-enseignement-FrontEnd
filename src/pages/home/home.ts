@@ -1,7 +1,5 @@
  import { Component } from '@angular/core';
-import {AlertController, LoadingController, NavController} from 'ionic-angular';
-import {LoginPage} from "../login/login";
-import {AlertController, NavController} from 'ionic-angular';
+import {LoadingController, NavController,AlertController,} from 'ionic-angular';
 import {RegisterProvider} from "../../providers/register/register";
 import {Register} from "../../entities/register";
 

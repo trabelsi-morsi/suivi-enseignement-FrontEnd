@@ -4,6 +4,7 @@ import {SignUpPage} from "../sign-up/sign-up";
 import {animation} from "@angular/core/src/animation/dsl";
 import {AnimationBuilder, AnimationService} from "css-animator";
 import {HomePage} from "../home/home";
+import {MyApp} from "../../app/app.component";
 
 /**
  * Generated class for the LoginPage page.

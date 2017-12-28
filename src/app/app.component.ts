@@ -8,6 +8,8 @@ import { LoginPage } from '../pages/login/login';
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {DepartementPage} from "../pages/departement/departement";
 import {MatierePage} from "../pages/matiere/matiere";
+import {Enseignement} from "../entities/enseignement";
+import {AgentAccueilPage} from "../pages/agent-accueil/agent-accueil";
 
 
 @Component({
@@ -30,6 +32,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Departement', component: DepartementPage },
       { title: 'Matière', component: MatierePage },
+      { title: 'Enseignement', component: AgentAccueilPage },
       { title: 'Sign up', component: SignUpPage }
     ];
 

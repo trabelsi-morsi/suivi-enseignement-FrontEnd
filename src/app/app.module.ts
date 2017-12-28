@@ -16,6 +16,8 @@ import {DepartementPage} from "../pages/departement/departement";
 import { DepartementProvider } from '../providers/departement/departement';
 import { MatiereProvider } from '../providers/matiere/matiere';
 import {MatierePage} from "../pages/matiere/matiere";
+import {AgentAccueilPage} from "../pages/agent-accueil/agent-accueil";
+import { EnseignementProvider } from '../providers/enseignement/enseignement';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import {MatierePage} from "../pages/matiere/matiere";
     SignUpPage,
     DepartementPage,
     MatierePage,
+    AgentAccueilPage,
     AnimatesDirective
   ],
   imports: [
@@ -39,9 +42,9 @@ import {MatierePage} from "../pages/matiere/matiere";
     HomePage,
     LoginPage,
     DepartementPage,
-    SignUpPage
     SignUpPage,
-    MatierePage
+    MatierePage,
+    AgentAccueilPage
   ],
   providers: [
     StatusBar,
@@ -52,8 +55,9 @@ import {MatierePage} from "../pages/matiere/matiere";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterProvider,
     AnimationService,
-    DepartementProvider
-    MatiereProvider
+    DepartementProvider,
+    MatiereProvider,
+    EnseignementProvider
   ]
 })
 export class AppModule {}
