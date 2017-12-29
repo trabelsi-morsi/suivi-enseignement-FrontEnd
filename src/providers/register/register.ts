@@ -1,5 +1,5 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Register} from "../../entities/register";
 
 /*
@@ -9,7 +9,8 @@ import {Register} from "../../entities/register";
   and Angular DI.
 */
 const headers = new HttpHeaders().set("Content-Type", "application/json")
-  .set( 'Accept','application/json' );
+  .set('Accept', 'application/json');
+
 @Injectable()
 export class RegisterProvider {
 
@@ -18,10 +19,11 @@ export class RegisterProvider {
 
   constructor(public http: HttpClient) {
   }
-  public  getAllRegister(){
-   // return  this.http.get(this.url);
+
+  public getAllRegister() {
+    // return  this.http.get(this.url);
     return new Promise(resolve => {
-      this.http.get(this.url,{headers}).subscribe(data => {
+      this.http.get(this.url, {headers}).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {
@@ -30,18 +32,18 @@ export class RegisterProvider {
     });
   }
 
-  public addRegister(register: Register){
-       // return this.http.post(this.url,register,{headers}).subscribe(
-       //   res => {
-       //     console.log(res);
-       //   },
-       //   err => {
-       //     console.log("Error occured");
-       //     console.log(JSON.stringify(register));
-       //   }
-       // );
+  public addRegister(register: Register) {
+    // return this.http.post(this.url,register,{headers}).subscribe(
+    //   res => {
+    //     console.log(res);
+    //   },
+    //   err => {
+    //     console.log("Error occured");
+    //     console.log(JSON.stringify(register));
+    //   }
+    // );
     return new Promise(resolve => {
-      this.http.post(this.url,register,{headers}).subscribe(data => {
+      this.http.post(this.url, register, {headers}).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {
@@ -49,9 +51,10 @@ export class RegisterProvider {
       });
     });
   }
-  public  deleteRegister(email: string){
+
+  public deleteRegister(email: string) {
     return new Promise(resolve => {
-      this.http.delete(this.url+'/'+email,{headers}).subscribe(data => {
+      this.http.delete(this.url + '/' + email, {headers}).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {
@@ -59,9 +62,10 @@ export class RegisterProvider {
       });
     });
   }
-  public getOne(email: string){
+
+  public getOne(email: string) {
     return new Promise(resolve => {
-      this.http.get(this.url+'/'+email,{headers}).subscribe(data => {
+      this.http.get(this.url + '/' + email.toString(), {headers}).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {
