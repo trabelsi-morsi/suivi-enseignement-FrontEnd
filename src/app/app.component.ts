@@ -24,7 +24,7 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{ title: string, component: any }>;
+  pages: Array<{ title: string, component: any ,icon: string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
@@ -32,17 +32,14 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
 
-
-      {title: 'login', component: LoginPage},
-      {title: 'Home', component: HomePage},
-      {title: 'Matière', component: MatierePage},
-      {title: 'Departement', component: DepartementPage},
-      {title: 'Sign up', component: SignUpPage},
-      {title: 'Salle', component: SallePage},
-      { title: 'Enseignement', component: AgentAccueilPage },
-      { title: 'Enseignement (admin)', component: EnseignementPage },
-      {title: 'Enseignant', component: EnseignantPage},
-      {title: 'Niveau', component: NiveauPage}
+      {title: 'Utilisateur', component: HomePage,icon:'contact'},
+      {title: 'Matière', component: MatierePage,icon:'attach'},
+      {title: 'Departement', component: DepartementPage,icon:'briefcase'},
+      {title: 'Salle', component: SallePage,icon:'home'},
+      { title: 'Enseignement', component: AgentAccueilPage,icon:'clipboard' },
+      { title: 'Enseignement (admin)', component: EnseignementPage ,icon:'clipboard'},
+      {title: 'Enseignant', component: EnseignantPage,icon:'person'},
+      {title: 'Niveau', component: NiveauPage,icon:'school'}
     ];
 
   }
