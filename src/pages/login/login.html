@@ -15,7 +15,8 @@
 <ion-content padding style="text-align: center;padding-top: 20%">
 
   <div #myElement style="margin-left: 10%; margin-right: 10%; margin-top: 20%;">
-    <img src="http://www.farojob.net/wp-content/uploads/2016/12/Institut-International-Technologie.jpg" style="width: 150px;"/>
+    <img src="http://www.farojob.net/wp-content/uploads/2016/12/Institut-International-Technologie.jpg"
+         style="width: 150px;"/>
 
     <div style="
     padding: 14px;
@@ -25,25 +26,27 @@
       <ion-list>
 
         <ion-item>
-          <ion-label fixed>Username</ion-label>
-          <ion-input type="text" value=""></ion-input>
+          <ion-label fixed>Email</ion-label>
+          <ion-input type="email" name="email" [(ngModel)]="email"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label fixed>Password</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
         </ion-item>
 
       </ion-list>
 
       <div padding>
-        <button ion-button color="primary" block  (click)="onSignInClick()" >Sign In</button>
+        <button ion-button color="primary" block (click)="onSignInClick()">Sign In</button>
         <br>
-        <button ion-button color="primary" block   outline (click)="onSignUpClick()">Sign Up</button>
+        <button ion-button color="primary" block outline (click)="onSignUpClick()">Sign Up</button>
+      </div>
+      <div *ngIf="error!=null">
+        {{error}}
       </div>
     </div>
   </div>
-
 
 
 </ion-content>
