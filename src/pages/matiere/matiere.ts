@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {Matiere} from "../../entities/matiere";
 import {MatiereProvider} from "../../providers/matiere/matiere";
+import {AnimationBuilder, AnimationService} from "css-animator";
 
 @IonicPage()
 @Component({
@@ -11,12 +12,14 @@ import {MatiereProvider} from "../../providers/matiere/matiere";
 export class MatierePage implements OnInit {
   ngOnInit(): void {
   }
-
+  @ViewChild('item') myElem;
+  private animator: AnimationBuilder;
   matiere: any
   res: any
   matiereToEdit: Matiere
 
-  constructor(public navCtrl: NavController, private matiereProvider: MatiereProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,animationService: AnimationService, private matiereProvider: MatiereProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    this.animator = animationService.builder();
   }
 
   ionViewDidLoad() {
@@ -33,7 +36,7 @@ export class MatierePage implements OnInit {
       this.matiere = data;
       loading.dismiss();
     });
-
+    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
 
   doRefresh(refresher) {

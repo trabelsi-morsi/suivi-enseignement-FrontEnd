@@ -15,4 +15,11 @@ page-agent-accueil {
     margin-top: 20%;
     font-family: 'Raleway', sans-serif;
   }
+  .item-md {
+    margin-bottom: 5px;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+  }
+
+  ion-item-sliding .item { border-bottom-color: #074d86; }
 }

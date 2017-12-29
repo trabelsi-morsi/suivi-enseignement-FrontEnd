@@ -15,25 +15,25 @@
     <ion-refresher-content>
     </ion-refresher-content>
   </ion-refresher>
-  <ion-list>
+  <ion-list #item>
 
 
     <ion-item-sliding *ngFor="let r of niveau ">
       <ion-item>
         <ion-avatar item-start>
-          <img src="http://midlandbooks.ie/wp-content/uploads/2015/03/Book-icon1.png">
+          <img src="http://pluspng.com/img-png/graduation-hat-png-cap-diploma-doctorate-education-graduate-graduation-university-fx-physics-449.png">
         </ion-avatar>
         <h2>{{r.nom }}</h2>
       </ion-item>
       <ion-item-options>
 
-        <button ion-button color="primary" icon-start (click)="showPrompt(r)">
+        <button ion-button color="primary" icon-start (click)="showPrompt(r)" class="editBtn">
           <ion-icon name="create"></ion-icon>
-
+          <p>Edit</p>
         </button>
-        <button ion-button color="secondary" icon-start (click)="onDelete(r.id)">
+        <button ion-button color="secondary" icon-start (click)="onDelete(r.id)"  class="deleteBtn">
           <ion-icon name="trash"></ion-icon>
-
+          <p>Delete</p>
         </button>
       </ion-item-options>
     </ion-item-sliding>
