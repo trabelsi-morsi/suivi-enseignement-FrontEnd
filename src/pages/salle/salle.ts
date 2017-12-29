@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {Matiere} from "../../entities/matiere";
 import {Salle} from "../../entities/salle";
 import {MatiereProvider} from "../../providers/matiere/matiere";
 import {SalleProvider} from "../../providers/salle/salle";
+import {AnimationBuilder, AnimationService} from "css-animator";
 
 /**
  * Generated class for the SallePage page.
@@ -20,12 +21,14 @@ import {SalleProvider} from "../../providers/salle/salle";
 export class SallePage implements OnInit {
   ngOnInit(): void {
   }
-
+  @ViewChild('item') myElem;
+  private animator: AnimationBuilder;
   salle: any
   res: any
   salleToEdit: Salle
 
-  constructor(public navCtrl: NavController, private salleProvider: SalleProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,animationService: AnimationService, private salleProvider: SalleProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    this.animator = animationService.builder();
   }
 
   ionViewDidLoad() {
@@ -42,7 +45,7 @@ export class SallePage implements OnInit {
       this.salle = data;
       loading.dismiss();
     });
-
+    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
 
   doRefresh(refresher) {

@@ -1,24 +1,21 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Salle} from "../../entities/salle";
+import { Injectable } from '@angular/core';
+import {Seance} from "../../entities/seance";
 
 /*
-  Generated class for the SalleProvider provider.
+  Generated class for the SeanceProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 const headers = new HttpHeaders().set("Content-Type", "application/json")
   .set('Accept', 'application/json');
-
 @Injectable()
-export class SalleProvider {
-  url = 'http://34.240.182.39:8080/salle'
+export class SeanceProvider {
 
+  url = 'http://34.240.182.39:8080/seance'
   constructor(public http: HttpClient) {
-    console.log('Hello SalleProvider Provider');
   }
-
   public getAll() {
     return new Promise(resolve => {
       this.http.get(this.url, {headers}).subscribe(data => {
@@ -30,9 +27,9 @@ export class SalleProvider {
     });
   }
 
-  public add(salle: Salle) {
+  public add(seance: Seance) {
     return new Promise(resolve => {
-      this.http.post(this.url, salle, {headers}).subscribe(data => {
+      this.http.post(this.url, seance, {headers}).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {
@@ -62,6 +59,5 @@ export class SalleProvider {
       });
     });
   }
-
 
 }

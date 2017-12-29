@@ -25,6 +25,9 @@ import {EnseignantProvider} from '../providers/enseignant/enseignant';
 import {EnseignantPage} from "../pages/enseignant/enseignant";
 import {NiveauProvider} from '../providers/niveau/niveau';
 import {NiveauPage} from "../pages/niveau/niveau";
+import {EnseignementPage} from "../pages/enseignement/enseignement";
+import {EnseignementFormPage} from "../pages/enseignement/enseignement-form/enseignement-form";
+import { SeanceProvider } from '../providers/seance/seance';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,8 @@ import {NiveauPage} from "../pages/niveau/niveau";
     AgentAccueilPage,
     EnseignantPage,
     NiveauPage,
+    EnseignementPage,
+    EnseignementFormPage,
     AnimatesDirective
   ],
   imports: [
@@ -58,6 +63,8 @@ import {NiveauPage} from "../pages/niveau/niveau";
     SallePage,
     NiveauPage,
     EnseignantPage,
+    EnseignementPage,
+    EnseignementFormPage,
     MatierePage
   ],
   providers: [
@@ -76,7 +83,8 @@ import {NiveauPage} from "../pages/niveau/niveau";
     DepartementProvider,
     MatiereProvider,
     EnseignantProvider,
-    NiveauProvider
+    NiveauProvider,
+    SeanceProvider
 
   ]
 })

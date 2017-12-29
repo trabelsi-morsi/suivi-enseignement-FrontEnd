@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
-import {DepartementProvider} from "../../providers/departement/departement";
-import {Salle} from "../../entities/salle";
 import {EnseignantProvider} from "../../providers/enseignant/enseignant";
 import {Enseignant} from "../../entities/enseignant";
+import {AnimationBuilder, AnimationService} from "css-animator";
 
 
 @IonicPage()
@@ -15,11 +14,14 @@ export class EnseignantPage implements OnInit {
   ngOnInit(): void {
   }
 
+  @ViewChild('item') myElem;
+  private animator: AnimationBuilder;
   enseignant: any
   res: any
   enseignantToEdit: Enseignant
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private enseignantProvider: EnseignantProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController,animationService: AnimationService, public navParams: NavParams, private enseignantProvider: EnseignantProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    this.animator = animationService.builder();
   }
 
   ionViewDidLoad() {
@@ -36,7 +38,7 @@ export class EnseignantPage implements OnInit {
       this.enseignant = data;
       loading.dismiss();
     });
-
+    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
 
   doRefresh(refresher) {

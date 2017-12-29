@@ -13,6 +13,7 @@ import {AgentAccueilPage} from "../pages/agent-accueil/agent-accueil";
 import {SallePage} from "../pages/salle/salle";
 import {EnseignantPage} from "../pages/enseignant/enseignant";
 import {NiveauPage} from "../pages/niveau/niveau";
+import {EnseignementPage} from "../pages/enseignement/enseignement";
 
 
 @Component({
@@ -39,6 +40,7 @@ export class MyApp {
       {title: 'Sign up', component: SignUpPage},
       {title: 'Salle', component: SallePage},
       { title: 'Enseignement', component: AgentAccueilPage },
+      { title: 'Enseignement (admin)', component: EnseignementPage },
       {title: 'Enseignant', component: EnseignantPage},
       {title: 'Niveau', component: NiveauPage}
     ];

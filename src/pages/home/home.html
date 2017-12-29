@@ -14,9 +14,9 @@
     <ion-refresher-content>
     </ion-refresher-content>
   </ion-refresher>
-  <ion-list>
-    <ion-item-sliding *ngFor="let r of register ">
-      <ion-item>
+  <ion-list #item>
+    <ion-item-sliding *ngFor="let r of register " >
+      <ion-item >
         <ion-avatar item-start>
           <img src="https://www.shareicon.net/download/2016/09/01/822711_user_512x512.png">
         </ion-avatar>
@@ -25,13 +25,13 @@
       </ion-item>
       <ion-item-options>
 
-        <button ion-button color="primary" icon-start (click)="showPrompt(r)">
+        <button ion-button color="primary" icon-start (click)="showPrompt(r)" class="editBtn">
           <ion-icon name="create"></ion-icon>
-
+          <p>Edit</p>
         </button>
-        <button ion-button color="secondary" icon-start (click)="onDelete(r.email)">
+        <button ion-button color="secondary" icon-start (click)="onDelete(r.id)"  class="deleteBtn">
           <ion-icon name="trash"></ion-icon>
-
+          <p>Delete</p>
         </button>
       </ion-item-options>
     </ion-item-sliding>
