@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams,MenuController} from 'ionic-angular';
 import {Matiere} from "../../entities/matiere";
 import {MatiereProvider} from "../../providers/matiere/matiere";
 import {AnimationBuilder, AnimationService} from "css-animator";
@@ -12,14 +12,13 @@ import {AnimationBuilder, AnimationService} from "css-animator";
 export class MatierePage implements OnInit {
   ngOnInit(): void {
   }
-  @ViewChild('item') myElem;
-  private animator: AnimationBuilder;
+
   matiere: any
   res: any
   matiereToEdit: Matiere
 
-  constructor(public navCtrl: NavController,animationService: AnimationService, private matiereProvider: MatiereProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-    this.animator = animationService.builder();
+  constructor(public menuClt:MenuController,public navCtrl: NavController,private matiereProvider: MatiereProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+
   }
 
   ionViewDidLoad() {
@@ -36,7 +35,6 @@ export class MatierePage implements OnInit {
       this.matiere = data;
       loading.dismiss();
     });
-    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
 
   doRefresh(refresher) {
@@ -154,7 +152,7 @@ export class MatierePage implements OnInit {
 
     if (val && val.trim() != '') {
       this.matiere = this.matiere.filter((item) => {
-        return (item.nomSalle.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.nom.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
     else {

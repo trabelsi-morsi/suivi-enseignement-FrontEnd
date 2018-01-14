@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormGroup} from "@angular/forms";
 import {RegisterProvider} from "../../providers/register/register";
 import {Register} from "../../entities/register";
-import {HomePage} from "../home/home";
 import {LoginPage} from "../login/login";
 
 /**

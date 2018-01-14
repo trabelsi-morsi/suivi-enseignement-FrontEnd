@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <img src="assets/logobtn.png" style=" width: 35px; ">
+      <img src="assets/imgs/menubtn.png" style=" width: 35px; ">
     </button>
     <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   </ion-navbar>
@@ -19,7 +19,7 @@
 
 
     <ion-item-sliding *ngFor="let r of matiere ">
-      <ion-item #item>
+      <ion-item class="animated fadeInLeft">
         <ion-avatar item-start>
           <img src="http://midlandbooks.ie/wp-content/uploads/2015/03/Book-icon1.png">
         </ion-avatar>

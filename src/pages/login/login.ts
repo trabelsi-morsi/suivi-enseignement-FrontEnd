@@ -1,13 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams,MenuController} from 'ionic-angular';
 import {SignUpPage} from "../sign-up/sign-up";
-import {animation} from "@angular/core/src/animation/dsl";
 import {AnimationBuilder, AnimationService} from "css-animator";
-import {HomePage} from "../home/home";
-import {MyApp} from "../../app/app.component";
 import {RegisterProvider} from "../../providers/register/register";
-import {Register} from "../../entities/register";
 import {AgentAccueilPage} from "../agent-accueil/agent-accueil";
+import { Storage } from '@ionic/storage';
+import {HomePage} from "../home/home";
+import {DashbordPage} from "../dashbord/dashbord";
 
 /**
  * Generated class for the LoginPage page.
@@ -22,8 +21,6 @@ import {AgentAccueilPage} from "../agent-accueil/agent-accueil";
   templateUrl: 'login.html',
 })
 export class LoginPage implements OnInit {
-  @ViewChild('myElement') myElem;
-  private animator: AnimationBuilder;
 
   ngOnInit(): void {
   }
@@ -33,20 +30,31 @@ export class LoginPage implements OnInit {
   username: string
   r: any = null
   error: string = null
+  user:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, animationService: AnimationService, private registerProvider: RegisterProvider) {
-    this.animator = animationService.builder();
+  constructor(public menuClt:MenuController,public navCtrl: NavController, public navParams: NavParams
+              , private registerProvider: RegisterProvider,private storage: Storage) {
+
+    this.menuClt.enable(false,'menuzone')
   }
 
   ionViewDidLoad() {
-    this.animateElem();
+    this.storage.get('user').then((val) => {
+      this.user=val;
+      if(this.user!=null){
+        if(this.user.admin==true){
+          this.navCtrl.setRoot(DashbordPage);
+        }else{
+          this.navCtrl.setRoot(AgentAccueilPage);
+        }
+      }
+    });
+
     this.error = this.navParams.get('error');
 
   }
 
-  animateElem() {
-    this.animator.setType('flipInX').show(this.myElem.nativeElement);
-  }
+
 
   onSignUpClick() {
     this.navCtrl.push(SignUpPage);
@@ -64,8 +72,10 @@ export class LoginPage implements OnInit {
       if (this.password == this.r.password) {
 
         if (this.r.admin) {
-          this.navCtrl.setRoot(HomePage);
+          this.storage.set('user', this.r);
+           this.navCtrl.setRoot(DashbordPage);
         } else {
+          this.storage.set('user', this.r);
           this.navCtrl.setRoot(AgentAccueilPage);
         }
 

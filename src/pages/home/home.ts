@@ -1,8 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {AlertController, LoadingController, NavController} from 'ionic-angular';
+import {AlertController, LoadingController, NavController,MenuController} from 'ionic-angular';
 import {RegisterProvider} from "../../providers/register/register";
 import {Register} from "../../entities/register";
 import {AnimationBuilder, AnimationService} from "css-animator";
+
 
 @Component({
   selector: 'page-home',
@@ -12,11 +13,13 @@ export class HomePage {
 
   register: any
   registerToEdit: Register
-  @ViewChild('item') myElem;
-  private animator: AnimationBuilder;
 
-  constructor(public navCtrl: NavController,animationService: AnimationService, private registerProvider: RegisterProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-    this.animator = animationService.builder();
+  constructor(public menuClt:MenuController,public navCtrl: NavController
+              , private registerProvider: RegisterProvider, public alertCtrl: AlertController
+              , public loadingCtrl: LoadingController) {
+    this.menuClt.enable(true,'menuzone');
+
+
   }
 
   ionViewDidEnter() {
@@ -34,7 +37,6 @@ export class HomePage {
       loading.dismiss();
       console.log(data);
     });
-    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
 
   }
 

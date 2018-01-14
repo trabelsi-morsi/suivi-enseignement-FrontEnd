@@ -12,6 +12,11 @@
     <p style="    color: white;
     margin-left: 10%;
     font-size: 15px;">{{date.toDateString()}}</p>
+    <ion-buttons end *ngIf="!user">
+    <button ion-button icon-only (click)="logout()">
+      <ion-icon ios="ios-power" md="md-power" style="color:white;"></ion-icon>
+    </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -27,7 +32,7 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-list #item>
+  <ion-list class="animated fadeInLeft">
 
     <!-- <ion-item-sliding *ngFor="let r of enseignement ">-->
     <div *ngFor="let r of enseignement ">

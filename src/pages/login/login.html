@@ -12,11 +12,11 @@
 </ion-header>
 
 
-<ion-content padding style="text-align: center;padding-top: 20%">
+<ion-content padding style="text-align: center;padding-top: 20%" class="animated fadeInDown">
 
-  <div #myElement style="margin-left: 10%; margin-right: 10%; margin-top: 20%;">
-    <img src="http://www.farojob.net/wp-content/uploads/2016/12/Institut-International-Technologie.jpg"
-         style="width: 150px;"/>
+  <div  style="margin-left: 2%; margin-right: 2%; margin-top: 5%;" >
+    <img src="assets/imgs/logo.png"
+         style="width: 220px;" />
 
     <div style="
     padding: 14px;
@@ -26,12 +26,12 @@
       <ion-list>
 
         <ion-item>
-          <ion-label fixed>Email</ion-label>
+          <ion-label fixed><ion-icon ios="ios-mail-open" md="md-mail-open" style="margin-right: 10px;"></ion-icon>Email</ion-label>
           <ion-input type="email" name="email" [(ngModel)]="email"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label fixed>Password</ion-label>
+          <ion-label fixed><ion-icon ios="ios-lock" md="md-lock" style="margin-right: 10px;"></ion-icon>Password</ion-label>
           <ion-input type="password" name="password" [(ngModel)]="password"></ion-input>
         </ion-item>
 

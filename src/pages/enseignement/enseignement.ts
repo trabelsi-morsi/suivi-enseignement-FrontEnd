@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams,MenuController} from 'ionic-angular';
 import {EnseignementProvider} from "../../providers/enseignement/enseignement";
 import {Enseignement} from "../../entities/enseignement";
 import {EnseignementFormPage} from "./enseignement-form/enseignement-form";
@@ -19,15 +19,13 @@ import {AnimationBuilder, AnimationService} from "css-animator";
 })
 export class EnseignementPage implements OnInit{
 
-  @ViewChild('item') myElem;
-  private animator: AnimationBuilder;
   enseignement: any
   enseignementToEdit: Enseignement
   ngOnInit(): void {
   }
 
-  constructor(public navCtrl: NavController,animationService: AnimationService, public navParams: NavParams, private enseignementProvider: EnseignementProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-    this.animator = animationService.builder();
+  constructor(public menuClt:MenuController,public navCtrl: NavController, public navParams: NavParams, private enseignementProvider: EnseignementProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    this.menuClt.enable(true,'menuzone');
   }
 
   ionViewDidLoad() {
@@ -46,7 +44,6 @@ export class EnseignementPage implements OnInit{
       loading.dismiss();
       console.log(data);
     });
-    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
   onDelete(id: number) {
     this.enseignementProvider.delete(id).then(data => {

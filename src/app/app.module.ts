@@ -28,6 +28,9 @@ import {NiveauPage} from "../pages/niveau/niveau";
 import {EnseignementPage} from "../pages/enseignement/enseignement";
 import {EnseignementFormPage} from "../pages/enseignement/enseignement-form/enseignement-form";
 import { SeanceProvider } from '../providers/seance/seance';
+import {DashbordPage} from "../pages/dashbord/dashbord";
+import {IonicStorageModule} from "@ionic/storage";
+import {LogoutPage} from "../pages/logout/logout";
 
 @NgModule({
   declarations: [
@@ -43,13 +46,16 @@ import { SeanceProvider } from '../providers/seance/seance';
     NiveauPage,
     EnseignementPage,
     EnseignementFormPage,
-    AnimatesDirective
+    DashbordPage,
+    AnimatesDirective,
+    LogoutPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -65,7 +71,9 @@ import { SeanceProvider } from '../providers/seance/seance';
     EnseignantPage,
     EnseignementPage,
     EnseignementFormPage,
-    MatierePage
+    DashbordPage,
+    MatierePage,
+    LogoutPage
   ],
   providers: [
     StatusBar,

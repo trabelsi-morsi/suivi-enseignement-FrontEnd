@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams,MenuController} from 'ionic-angular';
 import {Salle} from "../../entities/salle";
 import {Niveau} from "../../entities/niveau";
 import {NiveauProvider} from "../../providers/niveau/niveau";
@@ -21,14 +21,12 @@ export class NiveauPage implements OnInit {
   ngOnInit(): void {
   }
 
-  @ViewChild('item') myElem;
-  private animator: AnimationBuilder;
   niveau: any
   res: any
   niveauToEdit: Niveau
 
-  constructor(public navCtrl: NavController,animationService: AnimationService, private niveauProvider: NiveauProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-    this.animator = animationService.builder();
+  constructor(public menuClt:MenuController,public navCtrl: NavController, private niveauProvider: NiveauProvider, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    this.menuClt.enable(true,'menuzone');
   }
 
   ionViewDidLoad() {
@@ -45,7 +43,6 @@ export class NiveauPage implements OnInit {
       this.niveau = data;
       loading.dismiss();
     });
-    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
 
   doRefresh(refresher) {

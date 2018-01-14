@@ -1,7 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {EnseignementProvider} from "../../providers/enseignement/enseignement";
-import {AnimationBuilder, AnimationService} from "css-animator";
+import { Storage } from '@ionic/storage';
+import {LoginPage} from "../login/login";
 
 /**
  * Generated class for the AgentAccueilPage page.
@@ -17,21 +18,23 @@ import {AnimationBuilder, AnimationService} from "css-animator";
 })
 export class AgentAccueilPage {
 
-  @ViewChild('item') myElem;
-  private animator: AnimationBuilder;
   enseignement: any
+  user: any;
   isToggled: boolean;
   isEmpty: boolean =true;
   firstToggle= true
   date: Date = new Date()
   enseignementList = new Array();
-  constructor(public navCtrl: NavController,animationService: AnimationService, public navParams: NavParams, private enseignementProvider: EnseignementProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private enseignementProvider: EnseignementProvider
+              , public alertCtrl: AlertController, public loadingCtrl: LoadingController,private storage: Storage) {
     this.isToggled=false
-    this.animator = animationService.builder();
   }
 
   ionViewDidLoad() {
     this.getEnseignementList();
+    this.storage.get('user').then((val) => {
+      this.user = val.admin;
+    });
   }
   getEnseignementList() {
 
@@ -48,7 +51,6 @@ export class AgentAccueilPage {
       loading.dismiss();
       console.log(data);
     });
-    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
   onDelete(id: number) {
     this.enseignementProvider.delete(id).then(data => {
@@ -114,5 +116,9 @@ export class AgentAccueilPage {
       ]
     });
     confirm.present();
+  }
+  logout(){
+    this.storage.clear();
+    this.navCtrl.setRoot(LoginPage);
   }
 }

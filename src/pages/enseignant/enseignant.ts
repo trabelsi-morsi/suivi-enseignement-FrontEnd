@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams,MenuController} from 'ionic-angular';
 import {EnseignantProvider} from "../../providers/enseignant/enseignant";
 import {Enseignant} from "../../entities/enseignant";
 import {AnimationBuilder, AnimationService} from "css-animator";
@@ -14,14 +14,12 @@ export class EnseignantPage implements OnInit {
   ngOnInit(): void {
   }
 
-  @ViewChild('item') myElem;
-  private animator: AnimationBuilder;
   enseignant: any
   res: any
   enseignantToEdit: Enseignant
 
-  constructor(public navCtrl: NavController,animationService: AnimationService, public navParams: NavParams, private enseignantProvider: EnseignantProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-    this.animator = animationService.builder();
+  constructor(public menuClt:MenuController,public navCtrl: NavController, public navParams: NavParams, private enseignantProvider: EnseignantProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    this.menuClt.enable(true,'menuzone');
   }
 
   ionViewDidLoad() {
@@ -38,7 +36,6 @@ export class EnseignantPage implements OnInit {
       this.enseignant = data;
       loading.dismiss();
     });
-    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
 
   doRefresh(refresher) {
@@ -75,6 +72,12 @@ export class EnseignantPage implements OnInit {
           placeholder: 'Adresse E-Mail',
           type: 'text',
           value: enseignant.email
+        },
+        {
+          name: 'telephone',
+          placeholder: 'Telephone',
+          type: 'number',
+          value: enseignant.telephone
         }
 
       ],
@@ -89,7 +92,7 @@ export class EnseignantPage implements OnInit {
           text: 'Valider',
           handler: data => {
             console.log(data.id);
-            this.enseignantToEdit = new Enseignant(parseInt(data.id), data.nom, data.email);
+            this.enseignantToEdit = new Enseignant(parseInt(data.id), data.nom, data.email,data.telephone);
             console.log('dddd  ' + this.enseignantToEdit)
             this.enseignantProvider.add(this.enseignantToEdit).then(data => {
               this.getEnseignantList();
@@ -116,13 +119,16 @@ export class EnseignantPage implements OnInit {
           name: 'nom',
           placeholder: 'Nom',
           type: 'text',
-
         },
         {
           name: 'email',
           placeholder: 'Adresse E-Mail',
           type: 'text',
-
+        },
+        {
+          name: 'telephone',
+          placeholder: 'Telephone',
+          type: 'number',
         }
       ],
       buttons: [
@@ -136,7 +142,7 @@ export class EnseignantPage implements OnInit {
           text: 'Valider',
           handler: data => {
             console.log(data.id);
-            this.enseignantToEdit = new Enseignant(null, data.nom, data.email);
+            this.enseignantToEdit = new Enseignant(null, data.nom, data.email,data.telephone);
             this.enseignantProvider.add(this.enseignantToEdit).then(data => {
               this.getEnseignantList();
 

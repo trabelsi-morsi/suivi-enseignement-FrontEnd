@@ -13,30 +13,29 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="text-align: center;padding-top: 10%">
   <div>
-    <img src="http://www.farojob.net/wp-content/uploads/2016/12/Institut-International-Technologie.jpg" style="width: 50%;
-    text-align: center;
-    margin-left: 23%;"/>
+    <img src="assets/imgs/logo.png"
+         style="width: 220px;"/>
 
-      <ion-list>
+      <ion-list class="animated fadeInUp">
         <form (ngSubmit)="logForm()">
         <ion-item>
-          <ion-label fixed>mail</ion-label>
+          <ion-label fixed>Email</ion-label>
           <ion-input type="mail"  [(ngModel)]="mail" name="mail"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label fixed>Password</ion-label>
+          <ion-label fixed>Mot de passe</ion-label>
           <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label fixed>Username</ion-label>
+          <ion-label fixed>Nom et Prenom</ion-label>
           <ion-input type="text"  [(ngModel)]="username" name="username"></ion-input>
         </ion-item>
           <ion-item>
-            <ion-label>Birthday</ion-label>
+            <ion-label>Date de naissance</ion-label>
             <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dateNaissance" name="dateNaissance"></ion-datetime>
           </ion-item>
           <br>

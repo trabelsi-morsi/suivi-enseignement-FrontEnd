@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AlertController, IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, LoadingController, NavController, NavParams,MenuController} from 'ionic-angular';
 import {Departement} from "../../entities/departement";
 import {DepartementProvider} from "../../providers/departement/departement";
 import {AnimationBuilder, AnimationService} from "css-animator";
@@ -22,11 +22,10 @@ export class DepartementPage implements OnInit {
 
   departement: any
   departementToEdit: Departement
-  @ViewChild('item') myElem;
-  private animator: AnimationBuilder;
 
-  constructor(public navCtrl: NavController,animationService: AnimationService, public navParams: NavParams, private departementProvider: DepartementProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-    this.animator = animationService.builder();
+
+  constructor(public menuClt:MenuController,public navCtrl: NavController, public navParams: NavParams, private departementProvider: DepartementProvider, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+    this.menuClt.enable(true,'menuzone');
   }
 
   ionViewDidLoad() {
@@ -48,7 +47,6 @@ export class DepartementPage implements OnInit {
       loading.dismiss();
       console.log(data);
     });
-    this.animator.setType('slideInLeft').show(this.myElem.nativeElement)
   }
 
   onDelete(id: number) {

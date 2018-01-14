@@ -1,0 +1,44 @@
+<!--
+  Generated template for the DashbordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <img src="assets/imgs/menubtn.png" style=" width: 35px; ">
+    </button>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="text-align: center">
+    <div class="divDashboard animated zoomIn">
+      <img src="http://ww1.prweb.com/prfiles/2012/02/05/14222665/bg_house.png" style="width: 150px;height: 150px;"/>
+      <div class="card-title">Nombre des départements</div>
+      <div class="card-subtitle"> {{nbDep}}</div>
+    </div>
+
+    <div class="divDashboard animated zoomIn">
+      <img src="http://www.pngmart.com/files/5/Teacher-PNG-Transparent.png" style="width: 150px;height: 150px;"/>
+      <div class="card-title">Nombre des enseignants</div>
+      <div class="card-subtitle">{{nbEnseignant}}</div>
+    </div>
+
+    <div class="divDashboard animated zoomIn">
+      <img src="https://png.icons8.com/nolan/540/note.png" style="width: 150px;height: 150px;"/>
+      <div class="card-title">Enseignements d'aujourd'hui</div>
+      <div class="card-subtitle">{{nbTotEns}}</div>
+    </div>
+
+    <div class="divDashboard animated zoomIn">
+      <img src="https://png.icons8.com/nolan/540/note.png" style="width: 150px;height: 150px;"/>
+      <div class="card-title">Enseignements ratés</div>
+      <div class="card-subtitle"> {{missedEns}}</div>
+    </div>
+
+</ion-content>
